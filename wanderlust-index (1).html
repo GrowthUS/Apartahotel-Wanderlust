@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apartahotel Wanderlust — Apartamentos frente al mar en Montañita</title>
+<meta name="description" content="Apartahotel Wanderlust en Montañita: apartamentos familiares a 2 minutos de la playa. Wi-Fi y parking gratis, cocina, aire acondicionado. Ambiente tranquilo, ideal para familias. Calificación 9.4/10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0f4c5c;
+    --teal:#1c7a8c;
+    --aqua:#3aa8b8;
+    --sun:#f2a65a;
+    --coral:#ee6c4d;
+    --sand:#f7f0e6;
+    --sand-soft:#fdf9f2;
+    --text:#2b3a3f;
+    --text-soft:#617177;
+    --white:#ffffff;
+    --font-body:'Quicksand', -apple-system, Arial, sans-serif;
+    --font-hand:'Caveat', cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body);color:var(--text);background:var(--sand-soft);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-weight:700;line-height:1.15;letter-spacing:-.01em;}
+  a{text-decoration:none;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 6%;transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  nav.scrolled{background:var(--white);padding:12px 6%;box-shadow:0 4px 26px -14px rgba(15,76,92,.5);}
+  .logo{font-size:23px;font-weight:700;color:var(--white);transition:color .4s ease;display:flex;align-items:center;gap:8px;}
+  .logo .pin{font-size:20px;}
+  .logo b{color:var(--sun);}
+  nav.scrolled .logo{color:var(--deep);}
+  .links{display:flex;align-items:center;}
+  .links a{color:var(--white);font-size:14.5px;font-weight:500;margin-left:30px;transition:color .3s ease;}
+  nav.scrolled .links a{color:var(--text);}
+  .links a:hover{color:var(--sun);}
+  .cta{background:var(--coral);color:var(--white) !important;padding:11px 22px;border-radius:40px;font-weight:600;}
+  .cta:hover{background:var(--deep);}
+  nav.scrolled .cta{color:var(--white) !important;}
+  .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+  .burger span{width:25px;height:2px;background:var(--white);transition:.3s;}
+  nav.scrolled .burger span{background:var(--deep);}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:linear-gradient(rgba(15,76,92,.5), rgba(15,76,92,.62)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80'), linear-gradient(160deg,#1c7a8c,#0f4c5c);
+    background-size:cover,cover,cover;background-position:center,center,center;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:var(--white);padding:130px 20px 90px;
+  }
+  .hero .hand{font-family:var(--font-hand);font-size:clamp(26px,4vw,38px);color:var(--sun);margin-bottom:6px;}
+  .hero h1{font-size:clamp(40px,7vw,82px);margin-bottom:18px;text-shadow:0 2px 30px rgba(0,0,0,.25);}
+  .hero p{font-size:clamp(16px,2vw,20px);max-width:600px;margin-bottom:30px;font-weight:400;opacity:.96;}
+  .hero-badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:34px;}
+  .hbadge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:40px;padding:8px 18px;font-size:13.5px;font-weight:500;}
+  .hbadge b{color:var(--sun);}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .btn-solid{background:var(--coral);color:var(--white);padding:15px 34px;border-radius:40px;font-weight:600;font-size:15px;transition:.3s;border:2px solid var(--coral);}
+  .btn-solid:hover{background:transparent;border-color:var(--white);}
+  .btn-line{background:transparent;color:var(--white);padding:15px 34px;border-radius:40px;font-weight:600;font-size:15px;transition:.3s;border:2px solid rgba(255,255,255,.6);}
+  .btn-line:hover{background:var(--white);color:var(--deep);}
+
+  section{padding:96px 6%;}
+  .label{color:var(--aqua);font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+  .title{font-size:clamp(30px,4.4vw,50px);color:var(--deep);margin-bottom:18px;}
+  .center{text-align:center;}
+  .intro{max-width:640px;margin:0 auto 56px;color:var(--text-soft);font-size:17px;}
+
+  /* ABOUT */
+  .about{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .about-img{
+    height:500px;border-radius:20px;
+    background:url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=80'), linear-gradient(160deg,#3aa8b8,#0f4c5c);
+    background-size:cover,cover;background-position:center,center;
+    box-shadow:0 30px 60px -34px rgba(15,76,92,.55);
+  }
+  .about-txt p{color:var(--text-soft);margin-bottom:18px;font-size:16px;}
+  .about-stats{display:flex;gap:34px;margin-top:30px;flex-wrap:wrap;}
+  .astat .n{font-size:38px;color:var(--coral);font-weight:700;line-height:1;}
+  .astat .l{font-size:13px;color:var(--text-soft);margin-top:4px;}
+
+  /* AMENITIES */
+  .amen{background:var(--sand);}
+  .amen-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;max-width:1080px;margin:0 auto;}
+  .amen-card{background:var(--white);border-radius:18px;padding:28px 24px;text-align:center;transition:transform .35s ease, box-shadow .35s ease;}
+  .amen-card:hover{transform:translateY(-6px);box-shadow:0 24px 46px -30px rgba(15,76,92,.5);}
+  .amen-ico{width:58px;height:58px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+  .amen-ico svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.7;}
+  .amen-card h3{font-size:18px;color:var(--deep);margin-bottom:5px;}
+  .amen-card p{font-size:13.5px;color:var(--text-soft);}
+
+  /* ROOMS */
+  .rooms{background:var(--white);}
+  .room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:1120px;margin:0 auto;}
+  .room{background:var(--sand-soft);border-radius:20px;overflow:hidden;border:1px solid var(--sand);transition:transform .35s ease, box-shadow .35s ease;}
+  .room:hover{transform:translateY(-8px);box-shadow:0 28px 54px -32px rgba(15,76,92,.5);}
+  .room-img{height:210px;background-size:cover;background-position:center;position:relative;}
+  .ri1{background-image:url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80'), linear-gradient(160deg,#3aa8b8,#0f4c5c);background-size:cover,cover;}
+  .ri2{background-image:url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80'), linear-gradient(160deg,#4bb3c3,#155e6b);background-size:cover,cover;}
+  .ri3{background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80'), linear-gradient(160deg,#5ec1cf,#1c7a8c);background-size:cover,cover;}
+  .room-tag{position:absolute;top:16px;left:16px;background:var(--coral);color:var(--white);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:6px 14px;border-radius:40px;}
+  .room-body{padding:26px 26px 28px;}
+  .room-body h3{font-size:23px;color:var(--deep);margin-bottom:4px;}
+  .room-cap{font-size:13px;color:var(--aqua);font-weight:600;margin-bottom:14px;}
+  .room-body p{font-size:14.5px;color:var(--text-soft);margin-bottom:18px;}
+  .room-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--sand);padding-top:18px;}
+  .room-price{font-size:30px;color:var(--deep);font-weight:700;line-height:1;}
+  .room-price small{font-size:13px;color:var(--text-soft);font-weight:500;}
+  .room-btn{background:var(--teal);color:var(--white);padding:11px 22px;border-radius:40px;font-size:14px;font-weight:600;transition:.3s;}
+  .room-btn:hover{background:var(--coral);}
+
+  /* LOCATION */
+  .loc{background:var(--deep);color:var(--white);}
+  .loc .title{color:var(--white);}
+  .loc .label{color:var(--sun);}
+  .loc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;max-width:1050px;margin:44px auto 0;}
+  .loc-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px;}
+  .loc-card .dist{font-size:30px;color:var(--sun);font-weight:700;}
+  .loc-card h3{font-size:18px;margin:6px 0 4px;}
+  .loc-card p{font-size:13.5px;opacity:.8;}
+
+  /* REVIEWS */
+  .rev{background:var(--sand);}
+  .rev-score{max-width:640px;margin:0 auto 46px;background:var(--white);border-radius:20px;padding:34px;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;}
+  .rev-num{font-size:60px;color:var(--coral);font-weight:700;line-height:1;}
+  .rev-score .txt{max-width:320px;}
+  .rev-score .txt strong{color:var(--deep);font-size:19px;}
+  .rev-score .txt p{font-size:14px;color:var(--text-soft);}
+  .rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1080px;margin:0 auto;}
+  .rev-card{background:var(--white);border-radius:18px;padding:30px;}
+  .rev-stars{color:var(--sun);letter-spacing:2px;margin-bottom:14px;}
+  .rev-card p{font-style:italic;color:var(--text);margin-bottom:16px;font-size:15px;}
+  .rev-card .who{font-size:13px;color:var(--text-soft);font-weight:600;}
+
+  /* CTA / BOOK */
+  .book{
+    background:linear-gradient(rgba(15,76,92,.86), rgba(15,76,92,.92)), url('https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=1600&q=80'), linear-gradient(160deg,#1c7a8c,#0f4c5c);
+    background-size:cover,cover,cover;background-position:center,center,center;
+    color:var(--white);text-align:center;
+  }
+  .book .title{color:var(--white);}
+  .book-card{max-width:600px;margin:0 auto;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:22px;padding:44px 40px;}
+  .book-card h3{font-size:26px;margin-bottom:10px;}
+  .book-card p{opacity:.9;margin-bottom:26px;font-size:15px;}
+  .b-row{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:14px;font-size:15.5px;}
+  .b-row svg{width:19px;height:19px;stroke:var(--sun);fill:none;stroke-width:1.7;}
+  .btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25a35a;color:var(--white);padding:16px 38px;border-radius:40px;font-size:16px;font-weight:600;margin-top:22px;transition:.3s;}
+  .btn-wa:hover{background:#1f8c4c;transform:translateY(-2px);}
+  .btn-wa svg{width:20px;height:20px;fill:var(--white);}
+  .book-note{margin-top:20px;font-size:12.5px;opacity:.75;}
+
+  footer{background:#0a3540;color:var(--white);padding:52px 6% 30px;text-align:center;}
+  .f-logo{font-size:26px;font-weight:700;margin-bottom:12px;}
+  .f-logo b{color:var(--sun);}
+  .f-info{opacity:.78;font-size:13.5px;margin-bottom:6px;}
+  .f-div{width:50px;height:2px;background:var(--sun);margin:22px auto;border-radius:2px;}
+  .f-copy{opacity:.55;font-size:12px;}
+  .f-credit{opacity:.42;font-size:11px;margin-top:7px;}
+
+  .wa-float{position:fixed;bottom:24px;right:24px;z-index:900;width:58px;height:58px;background:#25a35a;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px -6px rgba(37,163,90,.6);transition:transform .3s ease;}
+  .wa-float:hover{transform:scale(1.1);}
+  .wa-float svg{width:32px;height:32px;fill:var(--white);}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  @media (max-width:880px){
+    .links{position:fixed;top:0;right:-100%;height:100vh;width:72%;background:var(--white);flex-direction:column;justify-content:center;transition:right .4s ease;box-shadow:-10px 0 40px -22px rgba(0,0,0,.5);}
+    .links.open{right:0;}
+    .links a{color:var(--text) !important;font-size:18px;margin:14px 0;}
+    .burger{display:flex;}
+    .about{grid-template-columns:1fr;gap:36px;}
+    .about-img{height:320px;}
+    section{padding:66px 6%;}
+    .rev-score{gap:20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#inicio" class="logo"><span class="pin">📍</span>Aparta<b>Wanderlust</b></a>
+  <div class="links" id="links">
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#apartamentos">Apartamentos</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#reservar" class="cta">Reservar</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="inicio">
+  <div class="hand">Bienvenido a tu hogar en la playa</div>
+  <h1>Apartahotel Wanderlust</h1>
+  <p>Apartamentos frente al mar en Montañita, a dos minutos de la playa. El lugar ideal para descansar en familia, lejos del bullicio.</p>
+  <div class="hero-badges">
+    <div class="hbadge">⭐ <b>9.4</b>/10 Excepcional</div>
+    <div class="hbadge">🏖️ A <b>2 min</b> de la playa</div>
+    <div class="hbadge">👨‍👩‍👧 Ideal <b>familias</b></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#reservar" class="btn-solid">Reservar ahora</a>
+    <a href="#apartamentos" class="btn-line">Ver apartamentos</a>
+  </div>
+</header>
+
+<!-- NOSOTROS -->
+<section class="about" id="nosotros">
+  <div class="about-img reveal"></div>
+  <div class="about-txt reveal">
+    <div class="label">Nosotros</div>
+    <h2 class="title">Tu hogar frente<br>al mar en Montañita</h2>
+    <p>En Wanderlust creemos que unas vacaciones en familia merecen un lugar donde sentirse como en casa. Por eso ofrecemos apartamentos cómodos y equipados, a pocos pasos de la playa, en un ambiente tranquilo y seguro.</p>
+    <p>A diferencia del bullicio del centro, aquí encontrarás la paz para descansar, con todo lo que necesitas a poca distancia: la playa, tiendas, farmacia y restaurantes. Un espacio pensado para familias y viajeros que buscan calma.</p>
+    <div class="about-stats">
+      <div class="astat"><div class="n">9.4</div><div class="l">Calificación</div></div>
+      <div class="astat"><div class="n">19</div><div class="l">Apartamentos</div></div>
+      <div class="astat"><div class="n">2 min</div><div class="l">A la playa</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amen" id="servicios">
+  <div class="center">
+    <div class="label reveal">Comodidades</div>
+    <h2 class="title reveal">Todo lo que necesitas</h2>
+  </div>
+  <div class="amen-grid">
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg></div>
+      <h3>Wi-Fi gratis</h3>
+      <p>Internet en todos los apartamentos y áreas comunes.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h4l3 3v5h-7M5.5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg></div>
+      <h3>Parking gratis</h3>
+      <p>Estacionamiento privado sin costo para tu vehículo.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M8 11v6M12 11v6M16 11v6M4 7l1 13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1l1-13"/></svg></div>
+      <h3>Cocina equipada</h3>
+      <p>Apartamentos con cocina para que comas a tu ritmo.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M5 12a7 7 0 0 1 14 0M5 12v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5M9 8V6M15 8V6"/></svg></div>
+      <h3>Aire acondicionado</h3>
+      <p>Para descansar fresco después de un día de playa.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-6 8 6v10M9 20v-6h6v6"/></svg></div>
+      <h3>Terraza y patio</h3>
+      <p>Espacios al aire libre para relajarte con los tuyos.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+      <h3>Ambiente familiar</h3>
+      <p>Zona tranquila y segura, sin fiestas. Ideal con niños.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3c0 1.5 3 7 3 7s3-5.5 3-7a3 3 0 0 0-3-3zM5 22h14M6 18h12"/></svg></div>
+      <h3>Limpieza</h3>
+      <p>Servicio de housekeeping durante tu estadía.</p>
+    </div>
+    <div class="amen-card reveal">
+      <div class="amen-ico"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+      <h3>Recepción</h3>
+      <p>Atención cercana para ayudarte en lo que necesites.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APARTAMENTOS -->
+<section class="rooms" id="apartamentos">
+  <div class="center">
+    <div class="label reveal">Alojamiento</div>
+    <h2 class="title reveal">Nuestros apartamentos</h2>
+    <p class="intro reveal">Espacios cómodos y luminosos, con todo lo necesario para tu estadía. Elige el que mejor se adapte a tu viaje.</p>
+  </div>
+  <div class="room-grid">
+    <div class="room reveal">
+      <div class="room-img ri1"><span class="room-tag">Vista al mar</span></div>
+      <div class="room-body">
+        <h3>Matrimonial vista al mar</h3>
+        <div class="room-cap">2 personas · cama doble</div>
+        <p>Despierta con el sonido del mar. Habitación con vista al océano, baño privado, aire acondicionado y balcón.</p>
+        <div class="room-foot">
+          <div class="room-price">$55<small> / noche</small></div>
+          <a href="#reservar" class="room-btn">Reservar</a>
+        </div>
+      </div>
+    </div>
+    <div class="room reveal">
+      <div class="room-img ri2"><span class="room-tag">Más elegida</span></div>
+      <div class="room-body">
+        <h3>Estudio Doble</h3>
+        <div class="room-cap">2 personas · cama doble</div>
+        <p>Estudio acogedor con dormitorio separado, baño privado y todo lo esencial para una escapada en pareja.</p>
+        <div class="room-foot">
+          <div class="room-price">$45<small> / noche</small></div>
+          <a href="#reservar" class="room-btn">Reservar</a>
+        </div>
+      </div>
+    </div>
+    <div class="room reveal">
+      <div class="room-img ri3"><span class="room-tag">Familias</span></div>
+      <div class="room-body">
+        <h3>Familiar Cuádruple</h3>
+        <div class="room-cap">Hasta 4 personas · 2 dormitorios</div>
+        <p>Apartamento con dos dormitorios, zona de comedor y espacio de trabajo. Perfecto para familias o grupos.</p>
+        <div class="room-foot">
+          <div class="room-price">$55<small> / noche</small></div>
+          <a href="#reservar" class="room-btn">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section class="loc" id="ubicacion">
+  <div class="center">
+    <div class="label reveal">Ubicación</div>
+    <h2 class="title reveal">A pasos de todo</h2>
+    <p class="intro reveal" style="color:rgba(255,255,255,.85);">En el corazón de Montañita pero lejos del ruido. Todo lo que necesitas, a pocos minutos caminando.</p>
+  </div>
+  <div class="loc-grid">
+    <div class="loc-card reveal"><div class="dist">2 min</div><h3>Playa Montañita</h3><p>Caminando. La playa a la vuelta de la esquina.</p></div>
+    <div class="loc-card reveal"><div class="dist">9 min</div><h3>Montañita Point</h3><p>El famoso punto de surf, a un paseo corto.</p></div>
+    <div class="loc-card reveal"><div class="dist">14 min</div><h3>Centro / Iglesia</h3><p>Tiendas, mercados, farmacia y restaurantes.</p></div>
+    <div class="loc-card reveal"><div class="dist">3 min</div><h3>Playa Olón</h3><p>En auto. Otra playa preciosa muy cerca.</p></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="rev">
+  <div class="center">
+    <div class="label reveal">Opiniones</div>
+    <h2 class="title reveal">Lo que dicen nuestros huéspedes</h2>
+  </div>
+  <div class="rev-score reveal">
+    <div class="rev-num">9.4</div>
+    <div class="txt">
+      <strong>Calificación "Excepcional"</strong>
+      <p>Basado en las opiniones verificadas de huéspedes en plataformas de reserva.</p>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev-card reveal">
+      <div class="rev-stars">★★★★★</div>
+      <p>"Cerca de la acción sin estar en ella. Playas tranquilas, y todo lo que necesitas a poca distancia caminando."</p>
+      <div class="who">Huésped verificado · vía Expedia</div>
+    </div>
+    <div class="rev-card reveal">
+      <div class="rev-stars">★★★★★</div>
+      <p>"El hotel es súper limpio y bien cuidado. Tiene todo para tu comodidad, y el anfitrión es increíblemente amable y servicial."</p>
+      <div class="who">Huésped verificado · vía Expedia</div>
+    </div>
+    <div class="rev-card reveal">
+      <div class="rev-stars">★★★★★</div>
+      <p>"La habitación es muy cómoda y limpia, y la ubicación cerca de la playa es genial. Volveríamos sin dudarlo."</p>
+      <div class="who">Huésped verificado · plataformas de reserva</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAR -->
+<section class="book" id="reservar">
+  <div class="center">
+    <div class="label reveal" style="color:var(--sun);">Reservas</div>
+    <h2 class="title reveal">Reserva tu estadía</h2>
+  </div>
+  <div class="book-card reveal">
+    <h3>Apartahotel Wanderlust</h3>
+    <p>Escríbenos directamente y reserva al mejor precio, sin comisiones de intermediarios.</p>
+    <div class="b-row">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Montañita, Manglaralto · Santa Elena</span>
+    </div>
+    <div class="b-row">
+      <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+      <span>A 2 minutos de Playa Montañita</span>
+    </div>
+    <a href="https://wa.me/593959934891?text=Hola,%20quisiera%20consultar%20disponibilidad%20en%20el%20Apartahotel%20Wanderlust" class="btn-wa" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.1-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 9.3a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.3 3.8c.6.3 1.1.4 1.5.5a3.5 3.5 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.2-.1-.4-.2z"/></svg>
+      Reservar por WhatsApp
+    </a>
+    <div class="book-note">Respuesta rápida · Atención cercana · Mejor precio directo</div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Aparta<b>Wanderlust</b></div>
+  <div class="f-info">Montañita, Manglaralto · Santa Elena, Ecuador</div>
+  <div class="f-info">A 2 minutos de Playa Montañita · Wi-Fi y parking gratis</div>
+  <div class="f-div"></div>
+  <div class="f-copy">© 2026 Apartahotel Wanderlust. Todos los derechos reservados.</div>
+  <div class="f-credit">Sitio web desarrollado por GrowthUS</div>
+</footer>
+
+<a href="https://wa.me/593959934891?text=Hola,%20quisiera%20consultar%20disponibilidad" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4-1.1l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.1-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6 9.3a4.9 4.9 0 0 0 1 2.6 11.3 11.3 0 0 0 4.3 3.8c.6.3 1.1.4 1.5.5a3.5 3.5 0 0 0 1.6.1 2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.2-.1-.4-.2z"/></svg>
+</a>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  });
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('links');
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.14});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
